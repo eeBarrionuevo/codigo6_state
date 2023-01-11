@@ -24,7 +24,9 @@ class _HomePageState extends State<HomePage> {
 
   double fontSize = 12.0;
 
-  double sliderValue = 0;
+  double redValue = 0;
+  double greenValue = 0;
+  double blueValue = 0;
 
   String naranja = "asdsadsad";
 
@@ -44,7 +46,12 @@ class _HomePageState extends State<HomePage> {
               message,
               style: TextStyle(
                 fontSize: fontSize,
-                color: Color.fromRGBO(sliderValue.toInt(), 200, 200, 1),
+                color: Color.fromRGBO(
+                  redValue.toInt(),
+                  greenValue.toInt(),
+                  blueValue.toInt(),
+                  1,
+                ),
               ),
             ),
             ElevatedButton(
@@ -57,18 +64,41 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 12.0,
             ),
-            Text("Valor del Slider:::: $sliderValue"),
+            // Text("Valor del Slider:::: $sliderValue"),
             Slider(
-              value: sliderValue,
+              value: redValue,
               min: 0,
-              max: 200,
+              max: 255,
               thumbColor: Colors.red,
               activeColor: Colors.amber,
               inactiveColor: Colors.indigo,
               onChanged: (double matasquita) {
-                sliderValue = matasquita;
+                redValue = matasquita;
                 setState(() {});
-                print(sliderValue);
+              },
+            ),
+            Slider(
+              value: greenValue,
+              min: 0,
+              max: 255,
+              thumbColor: Colors.red,
+              activeColor: Colors.amber,
+              inactiveColor: Colors.indigo,
+              onChanged: (double matasquita) {
+                greenValue = matasquita;
+                setState(() {});
+              },
+            ),
+            Slider(
+              value: blueValue,
+              min: 0,
+              max: 255,
+              thumbColor: Colors.red,
+              activeColor: Colors.amber,
+              inactiveColor: Colors.indigo,
+              onChanged: (double matasquita) {
+                blueValue = matasquita;
+                setState(() {});
               },
             ),
           ],
