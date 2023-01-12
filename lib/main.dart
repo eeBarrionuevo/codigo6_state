@@ -28,6 +28,8 @@ class _HomePageState extends State<HomePage> {
   double greenValue = 0;
   double blueValue = 0;
 
+  int position = 0;
+
   List<String> images = [
     "https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/2659475/pexels-photo-2659475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -112,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                 height: 20.0,
               ),
               Image.network(
-                images[1],
+                images[position],
                 height: 260,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -121,11 +123,23 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (position > 0) {
+                        position = position - 1;
+                        setState(() {});
+                        //position--;
+                      }
+                    },
                     child: Text("Anterior"),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (position < images.length - 1) {
+                        position = position + 1;
+                        setState(() {});
+                        //position++;
+                      }
+                    },
                     child: Text("Siguiente"),
                   ),
                 ],
